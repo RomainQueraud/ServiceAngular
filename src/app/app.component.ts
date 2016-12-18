@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {ContactService} from "./contact.service";
+import {Contact} from "./contact";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Contacts';
+  people = [
+    { firstName: 'Misko', lastName: 'Hevery', company: 'Google' }
+  ]
+
+  private contacts: Observable<Contact[]>;
+
+  constructor(private service:ContactService){
+    console.log("Constructeur de AppComponent");
+    setTimeout(()=>{
+      console.log(this.contacts);
+      this.contacts = service.getContacts();
+      console.log(this.contacts);
+    })
+  }
 }
