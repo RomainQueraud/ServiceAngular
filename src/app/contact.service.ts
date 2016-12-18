@@ -13,10 +13,18 @@ export class ContactService {
     console.log("Constructeur de ContactService");
   }
 
-  getContacts(){
-    console.log("Méthode getContacts() de ContactService");
-    return this.http.get(this.serverAddress + "/contacts")
-      .map(res=> <Contact[]> res.json())
+  getContacts(): Observable<Contact[]>{
+    let contacts = this.http.get(this.serverAddress + "/contacts")
+      .map(response => response.json().results.map(toContact))
+    return contacts;
   }
 
+}
+
+function toContact(r:any):Contact{
+  let contact = <Contact>({
+    "username" : r.username,
+    "company" : r.company
+  });
+  return contact;
 }
