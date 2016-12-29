@@ -1,7 +1,23 @@
 import { Component } from '@angular/core';
-import {ContactService} from "./contact.service";
-import {Contact} from "./contact";
-import {Observable} from "rxjs";
+
+export class User {
+  id: number;
+  name: string;
+}
+
+const USERS: User[] = [
+  { id: 10, name: 'Romain' },
+  { id: 11, name: 'Mr. Nice' },
+  { id: 12, name: 'Narco' },
+  { id: 13, name: 'Bombasto' },
+  { id: 14, name: 'Celeritas' },
+  { id: 15, name: 'Magneta' },
+  { id: 16, name: 'RubberMan' },
+  { id: 17, name: 'Dynama' },
+  { id: 18, name: 'Dr IQ' },
+  { id: 19, name: 'Magma' },
+  { id: 20, name: 'Tornado' }
+];
 
 @Component({
   selector: 'app-root',
@@ -9,22 +25,11 @@ import {Observable} from "rxjs";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Contacts';
-  people = [
-    { firstName: 'Misko', lastName: 'Hevery', company: 'Google' }
-  ]
+  title = 'Contact Application';
+  users = USERS;
+  selectedUser: User;
 
-  //private contacts: Observable<Contact[]>;
-  private contacts;
-
-  constructor(private service:ContactService){
-    console.log("Constructeur de AppComponent");
-    setTimeout(()=>{
-      console.log(this.contacts);
-      this.contacts = service.getContacts();
-      //service.getContacts();
-      console.log("les contacts : ");
-      console.log(this.contacts);
-    })
+  onSelect(user: User): void {
+    this.selectedUser = user;
   }
 }
