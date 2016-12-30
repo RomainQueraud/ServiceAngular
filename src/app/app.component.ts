@@ -1,35 +1,17 @@
-import { Component } from '@angular/core';
-
-export class User {
-  id: number;
-  name: string;
-}
-
-const USERS: User[] = [
-  { id: 10, name: 'Romain' },
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
-];
+import {Component} from "@angular/core/src/metadata/directives";
+import {UsersComponent} from "./users.component"
+/**
+ * Created by rqueraud on 29/12/2016.
+ */
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector:"app-root",
+  template: `
+    <h1>{{title}}</h1>
+    <a routerLink="/users">Users</a>
+    <router-outlet></router-outlet>
+`
 })
 export class AppComponent {
   title = 'Contact Application';
-  users = USERS;
-  selectedUser: User;
-
-  onSelect(user: User): void {
-    this.selectedUser = user;
-  }
 }
