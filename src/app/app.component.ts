@@ -9,11 +9,12 @@ import {UsersComponent} from "./users.component"
   template: `
     <h1>{{title}}</h1>
     <nav>
-      <a routerLink="/dashboard">Dashboard</a>
-      <a routerLink="/users">Users</a>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/users" routerLinkActive="active">Users</a>
     </nav>
     <router-outlet></router-outlet>
-`
+`,
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Contact Application';

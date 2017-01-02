@@ -9,6 +9,7 @@ import {UsersComponent} from "./users.component";
 import {UserService} from "./user.service";
 import {RouterModule} from "@angular/router";
 import {DashboardComponent} from "./dashboard.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -20,26 +21,8 @@ import {DashboardComponent} from "./dashboard.component";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
-        path: 'detail/:id',
-        component: UserDetailComponent
-      },
-      {
-        path: 'users',
-        component: UsersComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      }
-    ])
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

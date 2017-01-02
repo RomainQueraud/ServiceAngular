@@ -22,11 +22,14 @@ import 'rxjs/add/operator/switchMap';
       </div>
     </div>
     <button (click)="goBack()">Back</button>
-`
+`,
+  styleUrls: [ './user-detail.component.css' ]
 })
 export class UserDetailComponent implements OnInit{
 
+  /*
    @Input()
+   */
    user: User;
 
   constructor(

@@ -16,7 +16,8 @@ import {User} from "./user";
         </div>
       </a>
     </div>
-`
+  `,
+  styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit{
 
