@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import {User} from "./user";
 import { USERS } from './mock-users';
 import {Http} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
@@ -13,12 +14,20 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  getUser(id: number): Promise<User> {
+  getUser(id: string): Promise<User> {
     return this.getUsers()
       .then(users => users.find(user => user.id === id));
   }
 
   getUsers(): Promise<User[]> {
-    return Promise.resolve(USERS);
+    return this.http.get(this.usersUrl)
+      .toPromise()
+      .then(response => response.json() as User[])
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 }
