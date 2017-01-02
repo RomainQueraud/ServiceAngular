@@ -8,7 +8,10 @@ import {UsersComponent} from "./users.component"
   selector:"app-root",
   template: `
     <h1>{{title}}</h1>
-    <a routerLink="/users">Users</a>
+    <nav>
+      <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/users">Users</a>
+    </nav>
     <router-outlet></router-outlet>
 `
 })
