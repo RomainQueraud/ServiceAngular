@@ -23,6 +23,10 @@ export class UsersComponent implements OnInit{
     this.router.navigate(['/detail', this.selectedUser.id]);
   }
 
+  edit(user:User) : void {
+    this.router.navigate(['/detail', user.id]);
+  }
+
   onSelect(user: User): void {
     this.selectedUser = user;
   }

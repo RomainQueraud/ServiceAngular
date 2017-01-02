@@ -21,6 +21,7 @@
       (click)="onSelect(user)">
     <span class="badge">{{user.id}}</span>
     <span>{{user.name}} - {{user.company}}</span>
-    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
+    <button class="edit" (click)="edit(user); $event.stopPropagation()"><i class="material-icons" style="font-size:15px">edit</i></button>
+    <button class="edit" (click)="delete(user); $event.stopPropagation()"><i class="material-icons" style="font-size:15px">delete_forever</i></button>
   </li>
 </ul>
