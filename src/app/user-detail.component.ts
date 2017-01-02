@@ -20,7 +20,12 @@ import 'rxjs/add/operator/switchMap';
         <label>name:</label>
         <input [(ngModel)]="user.name" placeholder="Name">
       </div>
+      <div>
+        <label>company:</label>
+        <input [(ngModel)]="user.company" placeholder="Company">
+      </div>
     </div>
+    <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 `,
   styleUrls: [ './user-detail.component.css' ]
@@ -42,6 +47,11 @@ export class UserDetailComponent implements OnInit{
     this.route.params
       .switchMap((params: Params) => this.userService.getUser(params['id']))
       .subscribe(user => this.user = user);
+  }
+
+  save(): void {
+    this.userService.update(this.user)
+      .then(() => this.goBack());
   }
 
   goBack(): void {

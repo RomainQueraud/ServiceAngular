@@ -8,10 +8,19 @@
 </div>
 
 <h2>All Users</h2>
+<div>
+  <input #userName placeholder="Username"/>
+  <input #company placeholder="Company"/>
+  <button (click)="add(userName.value, company.value); userName.value=''; company.value=''">
+    Add
+  </button>
+</div>
 <ul class="users">
   <li *ngFor="let user of users"
       [class.selected]="user === selectedUser"
       (click)="onSelect(user)">
-    <span class="badge">{{user.id}}</span> {{user.name}}
+    <span class="badge">{{user.id}}</span>
+    <span>{{user.name}} - {{user.company}}</span>
+    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
   </li>
 </ul>

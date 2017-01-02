@@ -31,4 +31,23 @@ export class UsersComponent implements OnInit{
     this.userService.getUsers().then(users => this.users = users);
   }
 
+  add(name: string, company: string): void {
+    name = name.trim();
+    if (!name || !company) { return; }
+    this.userService.create(name, company)
+      .then(hero => {
+        this.users.push(hero);
+        this.selectedUser = null;
+      });
+  }
+
+  delete(user: User): void {
+    this.userService
+      .delete(user.id)
+      .then(() => {
+        this.users = this.users.filter(u => u !== user); //Pour éviter de refaire un appel API
+        if (this.selectedUser === user) { this.selectedUser = null; }
+      });
+  }
+
 }
